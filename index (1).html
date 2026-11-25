@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f7f5">
+  <meta name="description" content="NOVA Studio — creative design with clarity, precision and impact.">
+  <title>NOVA Studio | Creativity, Precision and Impact</title>
+  <style>
+    :root {
+      --paper: #f7f7f5;
+      --ink: #101010;
+      --muted: #696969;
+      --line: #deded9;
+      --soft: #ecece8;
+      --white: #fff;
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--paper); color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif; line-height: 1.55;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 44px)); margin: 0 auto; }
+    .topline { border-bottom: 1px solid var(--line); }
+    header {
+      min-height: 82px; display: flex; align-items: center;
+      justify-content: space-between; gap: 22px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 900; letter-spacing: .13em; }
+    .mark {
+      width: 38px; height: 38px; display: grid; place-items: center;
+      border: 2px solid var(--ink); border-radius: 50%; font-size: 18px;
+      font-weight: 900; letter-spacing: -.08em;
+    }
+    .brand-name { font-size: 17px; }
+    nav { display: flex; align-items: center; gap: 27px; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    nav a { color: #4c4c4c; }
+    nav a:hover { color: #000; }
+    .nav-cta, .button {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px; padding: 0 21px; border: 1px solid var(--ink);
+      background: var(--ink); color: white; font-size: 12px; font-weight: 800;
+      letter-spacing: .08em; text-transform: uppercase; transition: .2s ease;
+    }
+    .nav-cta:hover, .button:hover { background: transparent; color: var(--ink); }
+    .button.light { background: transparent; color: var(--ink); }
+    .button.light:hover { background: var(--ink); color: white; }
+    .hero { padding: 92px 0 82px; display: grid; grid-template-columns: 1.25fr .75fr; gap: 50px; align-items: center; }
+    .eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+    h1 { margin: 19px 0 22px; max-width: 760px; font-size: clamp(54px, 8.5vw, 104px); line-height: .91; letter-spacing: -.075em; }
+    h1 span { display: block; font-weight: 400; }
+    .hero-copy { max-width: 540px; color: #555; font-size: 17px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .hero-art {
+      min-height: 370px; position: relative; overflow: hidden;
+      background: #111; color: white; display: flex; align-items: center; justify-content: center;
+    }
+    .hero-art:before, .hero-art:after {
+      content: ""; position: absolute; border: 1px solid rgba(255,255,255,.23);
+      border-radius: 50%; width: 310px; height: 310px;
+    }
+    .hero-art:after { width: 220px; height: 220px; }
+    .orbit { position: absolute; width: 390px; height: 140px; border: 1px solid rgba(255,255,255,.38); border-radius: 50%; transform: rotate(-35deg); }
+    .hero-symbol { z-index: 1; font-size: clamp(90px, 15vw, 160px); font-weight: 900; letter-spacing: -.14em; transform: translateX(-7px); }
+    .art-caption { position: absolute; left: 22px; bottom: 18px; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #bdbdbd; }
+    .ticker { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 17px 0; overflow: hidden; }
+    .ticker-inner { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 10px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #555; }
+    section { padding: 86px 0; }
+    .section-head { display: flex; justify-content: space-between; gap: 30px; align-items: end; margin-bottom: 38px; }
+    .section-head h2 { margin: 10px 0 0; font-size: clamp(36px, 5vw, 58px); line-height: .98; letter-spacing: -.06em; }
+    .section-intro { max-width: 390px; color: var(--muted); font-size: 14px; }
+    .services { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .service { min-height: 220px; padding: 26px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .number { color: #858585; font-size: 11px; letter-spacing: .12em; }
+    .service h3 { margin: 42px 0 10px; font-size: 22px; letter-spacing: -.04em; }
+    .service p { margin: 0; max-width: 300px; color: var(--muted); font-size: 13px; }
+    .work-section { background: #111; color: white; }
+    .work-section .eyebrow, .work-section .section-intro { color: #aaa; }
+    .work-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 16px; }
+    .work-card { min-height: 260px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; background: #202020; border: 1px solid #383838; }
+    .work-card.feature { min-height: 390px; background: #e9b92f; color: #151515; }
+    .work-card.alt { background: #efefeb; color: #111; }
+    .work-card small { font-size: 10px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; opacity: .72; }
+    .work-card strong { font-size: clamp(30px, 5vw, 54px); line-height: .95; letter-spacing: -.07em; max-width: 470px; }
+    .work-card p { margin: 12px 0 0; font-size: 12px; opacity: .75; }
+    .work-note { margin-top: 17px; color: #aaa; font-size: 11px; }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 60px; }
+    .about-stamp { min-height: 260px; background: var(--soft); display: grid; place-items: center; }
+    .about-stamp span { font-size: 92px; font-weight: 900; letter-spacing: -.13em; }
+    .about-copy h2 { margin: 10px 0 20px; font-size: clamp(38px, 5vw, 60px); line-height: .96; letter-spacing: -.07em; }
+    .about-copy p { max-width: 600px; color: var(--muted); font-size: 15px; }
+    .values { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 25px; }
+    .values span { border: 1px solid var(--line); padding: 9px 12px; font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .contact { background: #e9e9e4; }
+    .contact-panel { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: end; }
+    .contact h2 { max-width: 680px; margin: 12px 0 15px; font-size: clamp(42px, 7vw, 78px); line-height: .93; letter-spacing: -.075em; }
+    .contact p { max-width: 480px; color: #5e5e5e; font-size: 14px; }
+    footer { padding: 25px 0; background: #111; color: white; }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    footer small { color: #aaa; font-size: 10px; letter-spacing: .08em; }
+    .footer-brand { font-weight: 900; letter-spacing: .14em; font-size: 13px; }
+    .menu-toggle { display: none; background: none; border: 1px solid var(--line); padding: 9px 12px; font-weight: 800; }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 32px, var(--max)); }
+      header { min-height: 72px; }
+      .menu-toggle { display: block; }
+      nav { display: none; position: absolute; z-index: 5; top: 72px; left: 0; right: 0; padding: 20px 22px; background: var(--paper); border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; gap: 18px; }
+      nav.open { display: flex; }
+      .nav-cta { display: none; }
+      .hero { padding: 65px 0 55px; grid-template-columns: 1fr; gap: 35px; }
+      .hero-art { min-height: 270px; }
+      .section-head, .contact-panel { display: block; }
+      .section-intro { margin-top: 18px; }
+      section { padding: 65px 0; }
+      .services { grid-template-columns: 1fr; }
+      .service { min-height: 175px; }
+      .service h3 { margin-top: 27px; }
+      .work-grid, .about-grid { grid-template-columns: 1fr; }
+      .work-card.feature { min-height: 300px; }
+      .about-grid { gap: 30px; }
+      .about-stamp { min-height: 210px; }
+      .contact-panel .button { margin-top: 18px; }
+      .ticker-inner { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topline">
+    <div class="wrap">
+      <header>
+        <a class="brand" href="#home" aria-label="NOVA Studio home">
+          <span class="mark">N</span><span class="brand-name">NOVA STUDIO</span>
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">MENU</button>
+        <nav id="nav">
+          <a href="#services">What we do</a>
+          <a href="#work">Selected work</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a class="nav-cta" href="#contact">Start a project ↗</a>
+      </header>
+    </div>
+  </div>
+
+  <main>
+    <div class="wrap" id="home">
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Independent creative studio · South Africa</div>
+          <h1>Ideas made <span>impossible</span> to ignore.</h1>
+          <p class="hero-copy">NOVA Studio creates clear, striking visual design for brands, businesses and people ready to make their mark.</p>
+          <div class="hero-actions">
+            <a class="button" href="#contact">Let's create something ↗</a>
+            <a class="button light" href="#work">Explore our work</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Abstract NOVA Studio graphic">
+          <div class="orbit"></div><div class="hero-symbol">N.</div>
+          <div class="art-caption">Creativity · Precision · Impact</div>
+        </div>
+      </section>
+    </div>
+
+    <div class="ticker">
+      <div class="wrap ticker-inner">
+        <span>Good ideas deserve great design</span><span>✳</span>
+        <span>Made with intention</span><span>✳</span>
+        <span>Built to stand out</span>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <section id="services">
+        <div class="section-head">
+          <div><div class="eyebrow">01 / What we do</div><h2>Design that<br>does its job.</h2></div>
+          <p class="section-intro">Focused creative services we can deliver with our current setup. No inflated promises — just thoughtful visuals made to help your brand communicate.</p>
+        </div>
+        <div class="services">
+          <article class="service"><div class="number">01 — SOCIAL</div><h3>Social media designs</h3><p>Scroll-stopping posts and promotional graphics for your social pages.</p></article>
+          <article class="service"><div class="number">02 — ADVERTISING</div><h3>Digital ad creatives</h3><p>Eye-catching product and business advertisements designed around your message.</p></article>
+          <article class="service"><div class="number">03 — BRAND VISUALS</div><h3>Basic brand identity</h3><p>Clean logo concepts, colour direction and visual elements to give a brand a consistent look.</p></article>
+          <article class="service"><div class="number">04 — CONTENT</div><h3>YouTube thumbnails</h3><p>Bold, readable thumbnail designs that give videos a clear visual hook.</p></article>
+          <article class="service"><div class="number">05 — PROMOTION</div><h3>Event & product posters</h3><p>Digital posters for launches, offers, events and product announcements.</p></article>
+          <article class="service"><div class="number">06 — CUSTOM</div><h3>Custom graphic design</h3><p>Have a visual idea in mind? Tell us what you need and we'll confirm if it's a fit.</p></article>
+        </div>
+      </section>
+    </div>
+
+    <section class="work-section" id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">02 / Selected work</div><h2>Made to make<br>an impression.</h2></div>
+          <p class="section-intro">A preview of the creative direction at NOVA Studio. Replace these sample panels with your real projects as your portfolio grows.</p>
+        </div>
+        <div class="work-grid">
+          <div class="work-card feature">
+            <small>Concept direction / Food advertising</small>
+            <strong>MAKE EVERY<br>BITE COUNT.</strong>
+            <div><p>Bold colour. Clear message. Appetite appeal.</p></div>
+          </div>
+          <div style="display:grid;gap:16px">
+            <div class="work-card alt"><small>Visual identity / Studio concept</small><strong>LESS NOISE.<br>MORE IMPACT.</strong><p>Minimal design with a confident point of view.</p></div>
+            <div class="work-card"><small>Digital content / Creative direction</small><strong>BUILT TO<br>BE SEEN.</strong><p>Visuals designed for the screen.</p></div>
+          </div>
+        </div>
+        <div class="work-note">Portfolio preview: sample concepts, not client commissions. Add completed work here as it becomes available.</div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <section id="about">
+        <div class="about-grid">
+          <div class="about-stamp"><span>NOVA.</span></div>
+          <div class="about-copy">
+            <div class="eyebrow">03 / About NOVA</div>
+            <h2>Small studio.<br>Big intention.</h2>
+            <p>NOVA Studio is an emerging creative design studio based in South Africa. We believe good design should do more than look attractive — it should communicate clearly, feel memorable and give every detail a purpose.</p>
+            <p>Our approach brings creativity and structure together, shaping each visual around the message it needs to deliver.</p>
+            <div class="values"><span>Creativity</span><span>Precision</span><span>Impact</span></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="contact" id="contact">
+      <div class="wrap contact-panel">
+        <div>
+          <div class="eyebrow">04 / Get in touch</div>
+          <h2>Have an idea?<br>Let's give it form.</h2>
+          <p>Tell us about your business, project or design idea. We'll discuss what you need and confirm the scope before work begins.</p>
+        </div>
+        <div class="hero-actions"><a class="button" href="mailto:novafounder8@gmail.com?subject=NOVA%20Studio%20Project%20Enquiry">Email NOVA Studio ↗</a><a class="button light" href="https://wa.me/27703390719?text=Hello%20NOVA%20Studio%2C%20I%27d%20like%20to%20enquire%20about%20your%20design%20services." target="_blank" rel="noopener">WhatsApp NOVA ↗</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div class="footer-brand">NOVA STUDIO</div>
+      <small>CREATIVITY, PRECISION AND IMPACT.</small>
+      <small>© <span id="year"></span> NOVA Studio · South Africa</small>
+    </div>
+  </footer>
+  <script>
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('nav');
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.textContent = open ? 'CLOSE' : 'MENU';
+    });
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = 'MENU';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
